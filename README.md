@@ -24,3 +24,4 @@ If you use scikit-ntk in your scientific work, please use the following citation
 ```
 TBD
 ```
+along with the one listed on the scikit-learn website: [https://scikit-learn.org/stable/about.html#citing-scikit-learn](https://scikit-learn.org/stable/about.html#citing-scikit-learn)
