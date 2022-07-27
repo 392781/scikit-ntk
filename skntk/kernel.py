@@ -117,5 +117,5 @@ class NeuralTangentKernel(Kernel):
         return False
 
     def __repr__(self):
-        return "{0}(depth={1:d}, c={2:.3f}, bias={3:.3f})".format(
-                self.__class__.__name__, self.depth, self.c, self.bias)
+        return "{0}(depth={1:d}, bias={2:.3f})".format(
+                self.__class__.__name__, self.depth, self.bias)

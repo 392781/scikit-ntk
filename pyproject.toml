@@ -1,0 +1,32 @@
+[tool.poetry]
+
+name = "scikit-ntk"
+version = "1.0.0"
+description = "Implementation of the neural tangent kernel for scikit-learn's Gaussian process module."
+license="BSD-3-Clause"
+authors = [
+    "Ronaldas P Lencevičius <rlencevicius@ucsb.edu>",
+]
+packages = [
+    { include = "skntk" },
+]
+readme = "README.md"
+homepage = "https://github.com/392781/scikit-ntk"
+repository = "https://github.com/392781/scikit-ntk"
+keywords = ["sckit-learn", "sklearn"]
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Mathematics"
+]
+
+[tool.poetry.urls]
+
+"Bug Tracker" = "https://github.com/392781/scikit-ntk/issues"
+
+[tool.poetry.dependencies]
+
+python = "^3.9.7"
+numpy = "^1.21.2"
+scikit-learn = "^1.0.1"
