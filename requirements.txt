@@ -1,3 +1,0 @@
-python>=3.9.7
-numpy>=1.21.2
-scikit-learn>=1.0.1
