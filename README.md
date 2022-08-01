@@ -18,6 +18,16 @@ In terminal using `pip` run:
 pip install scikit-ntk
 ```
 
+### Usage
+Useage is described in [`examples/usage.py`](https://github.com/392781/scikit-ntk/blob/master/example/usage.py); however, to get started simply import the `NeuralTangentKernel` class:
+
+```py
+from skntk import NeuralTangentKernel as NTK
+
+kernel_ntk = NTK(D=3, bias=0.01, bias_bounds=(1e-6, 1e6))
+```
+Once declared, usage is the same as other `scikit-learn` kernels.
+
 ## Citation
 
 If you use scikit-ntk in your scientific work, please use the following citation:
