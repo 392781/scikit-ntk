@@ -30,7 +30,8 @@ Once declared, usage is the same as other `scikit-learn` kernels.
 
 ## Citation
 
-If you use scikit-ntk in your scientific work, please use the following citation:
+If you use scikit-ntk in your scientific work, please use the following citation alongside the scikit-learn citations found at [https://scikit-learn.org/stable/about.html#citing-scikit-learn](https://scikit-learn.org/stable/about.html#citing-scikit-learn):
+
 ```
 @mastersthesis{lencevicius2022laplacentk,
   author  = "Ronaldas Paulius Lencevicius",
@@ -41,4 +42,3 @@ If you use scikit-ntk in your scientific work, please use the following citation
   note    = {\url{https://arxiv.org/abs/2208.03761}}
 }
 ```
-along with the one listed on the scikit-learn website: [https://scikit-learn.org/stable/about.html#citing-scikit-learn](https://scikit-learn.org/stable/about.html#citing-scikit-learn)
