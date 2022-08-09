@@ -1,6 +1,6 @@
 ## Neural Tangent Kernel for `scikit-learn` Gaussian Processes
 
-**scikit-ntk** is implementation of the neural tangent kernel (NTK) for the `scikit-learn` machine learning library.  This library is meant to directly integrate with [`sklearn.gaussian_process`](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.gaussian_process) module.  This implementation of the NTK can be used in combination with other kernels to train and predict with Gaussian process regressors and classifiers. 
+**scikit-ntk** is implementation of the neural tangent kernel (NTK) for the `scikit-learn` machine learning library as part of "An Empirical Analysis of the Laplace and Neural Tangent Kernels" ([https://arxiv.org/abs/2208.03761](https://arxiv.org/abs/2208.03761)) master's thesis.  This library is meant to directly integrate with [`sklearn.gaussian_process`](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.gaussian_process) module.  This implementation of the NTK can be used in combination with other kernels to train and predict with Gaussian process regressors and classifiers. 
 
 ## Installation
 
@@ -32,6 +32,13 @@ Once declared, usage is the same as other `scikit-learn` kernels.
 
 If you use scikit-ntk in your scientific work, please use the following citation:
 ```
-TBD
+@mastersthesis{lencevicius2022laplacentk,
+  author  = "Ronaldas Paulius Lencevicius",
+  title   = "An Empirical Analysis of the Laplace and Neural Tangent Kernels",
+  school  = "California State Polytechnic University, Pomona",
+  year    = "2022",
+  month   = "August",
+  note    = "https://arxiv.org/abs/2208.03761"
+}
 ```
 along with the one listed on the scikit-learn website: [https://scikit-learn.org/stable/about.html#citing-scikit-learn](https://scikit-learn.org/stable/about.html#citing-scikit-learn)
