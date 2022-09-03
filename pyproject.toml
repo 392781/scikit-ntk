@@ -5,7 +5,7 @@ version = "1.0.0"
 description = "Implementation of the neural tangent kernel for scikit-learn's Gaussian process module."
 license="BSD-3-Clause"
 authors = [
-    "Ronaldas P Lencevičius <rlencevicius@ucsb.edu>",
+    "Ronaldas P Lencevičius <contact@ronaldas.dev>",
 ]
 packages = [
     { include = "skntk" },
@@ -27,6 +27,5 @@ classifiers = [
 
 [tool.poetry.dependencies]
 
-python = "^3.9.7"
-numpy = "^1.21.2"
+python = "^3.7"
 scikit-learn = "^1.0.1"
