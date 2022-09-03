@@ -1,7 +1,7 @@
 [tool.poetry]
 
 name = "scikit-ntk"
-version = "1.0.0"
+version = "1.0.1"
 description = "Implementation of the neural tangent kernel for scikit-learn's Gaussian process module."
 license="BSD-3-Clause"
 authors = [
