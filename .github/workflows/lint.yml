@@ -5,7 +5,8 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    python-version: "3.X"
+    env:
+      python-version: "3.X"
 
     steps:
     - uses: actions/checkout@v3
