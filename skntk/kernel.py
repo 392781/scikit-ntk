@@ -83,15 +83,15 @@ class NeuralTangentKernel(Kernel):
             div = Σ_mat / denominator
             div = np.nan_to_num(div)
             λ = np.clip(div, a_min=-1, a_max=1)
-            Σ_mat = (self.c / (2 * np.pi)) * (λ * (np.pi - np.arccos(λ)) +
-                                              np.sqrt(1 - λ**2)) * denominator
+            Σ_mat = (self.c / (2 * np.pi)) * (λ * (np.pi - np.arccos(λ))
+                                              + np.sqrt(1 - λ**2)) * denominator
             Σ_mat_dot = (self.c / (2 * np.pi)) * (np.pi - np.arccos(λ))
             K = K * Σ_mat_dot + Σ_mat + self.bias**2
 
             if eval_gradient:
                 products.append(products[-1] * Σ_mat_dot)
 
-        scalar = 1/((self.depth + 1) * (self.bias**2 + 1))
+        scalar = 1 / ((self.depth + 1) * (self.bias**2 + 1))
 
         if eval_gradient:
             if not self.hyperparameter_bias.fixed:
@@ -99,8 +99,8 @@ class NeuralTangentKernel(Kernel):
                     * (1 + sum(1 / np.array(products)))
                 K_prime = np.expand_dims(K_prime, -1)
                 return scalar * K, scalar * \
-                    (K_prime - ((2 * self.bias**2) / (self.bias**2 + 1)) *
-                     np.expand_dims(K, -1))
+                    (K_prime - ((2 * self.bias**2) / (self.bias**2 + 1))
+                     * np.expand_dims(K, -1))
             else:
                 return scalar * K, np.empty((X.shape[0], X.shape[0], 0))
         else:
@@ -118,4 +118,4 @@ class NeuralTangentKernel(Kernel):
 
     def __repr__(self):
         return "{0}(depth={1:d}, bias={2:.3f})".format(
-                self.__class__.__name__, self.depth, self.bias)
+            self.__class__.__name__, self.depth, self.bias)
