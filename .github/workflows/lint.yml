@@ -6,13 +6,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      python-version: "3.X"
+      python-version: '3.x'
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout
 
     - name: Setting up Python $python-version
-      uses: actions/setup-python@v3
+      uses: actions/setup-python
       with:
         python-version: $python-version
     
