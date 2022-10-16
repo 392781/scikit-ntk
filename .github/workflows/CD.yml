@@ -40,8 +40,8 @@ jobs:
         
     - name: Setting up git user and apply semantic versioning using Poetry
       run: |
-        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config user.name "github-actions[bot]"
+        git config user.email "392781@users.noreply.github.com"
+        git config user.name "392781"
         poetry version $GITHUB_REF_NAME
         git checkout master
         git add pyproject.toml
