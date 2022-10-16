@@ -1,16 +1,14 @@
 name: Lint, Build, Install, Test
 
-on: [push, pull_request]
-  # push:
-  #   paths:
-  #   - 'example/**'
-  #   - 'skntk/**'
-  #   - 'tests/**'
-  # pull_request:
-  #   paths: 
-  #   - 'example/**'
-  #   - 'skntk/**'
-  #   - 'tests/**'
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    paths: 
+    - 'example/**'
+    - 'skntk/**'
+    - 'tests/**'
 
 jobs:
   lint:
@@ -62,6 +60,7 @@ jobs:
       
       - name: Installing dependencies
         run: |
+          python -m pip install --upgrade pip
           poetry install --with dev
 
       - name: Testing scikit-ntk
