@@ -59,7 +59,7 @@ jobs:
       - name: Building and installing scikit-ntk
         run: |
           poetry build
-          poetry install
+          poetry install --with dev
 
       - name: Testing scikit-ntk
         run: |
