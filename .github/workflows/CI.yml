@@ -4,11 +4,17 @@ on:
   push:
     branches:
     - master
+    paths:
+    - 'example/**'
+    - 'skntk/**'
+    - 'tests/**'
+    - 'pyproject.toml'
   pull_request:
     paths: 
     - 'example/**'
     - 'skntk/**'
     - 'tests/**'
+    - 'pyproject.toml'
   workflow_dispatch:
 
 jobs:
