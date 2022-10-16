@@ -1,5 +1,7 @@
 ## Neural Tangent Kernel for `scikit-learn` Gaussian Processes
 
+[![Lint, Build, Install, Test](https://github.com/392781/scikit-ntk/actions/workflows/CI.yml/badge.svg)](https://github.com/392781/scikit-ntk/actions/workflows/CI.yml)
+
 **scikit-ntk** is implementation of the neural tangent kernel (NTK) for the `scikit-learn` machine learning library as part of "An Empirical Analysis of the Laplace and Neural Tangent Kernels" master's thesis (found at [http://hdl.handle.net/20.500.12680/d504rr81v](http://hdl.handle.net/20.500.12680/d504rr81v) and [https://arxiv.org/abs/2208.03761](https://arxiv.org/abs/2208.03761)).  This library is meant to directly integrate with [`sklearn.gaussian_process`](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.gaussian_process) module.  This implementation of the NTK can be used in combination with other kernels to train and predict with Gaussian process regressors and classifiers. 
 
 ## Installation
