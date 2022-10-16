@@ -9,6 +9,7 @@ on:
     - 'example/**'
     - 'skntk/**'
     - 'tests/**'
+  workflow_dispatch:
 
 jobs:
   lint:
