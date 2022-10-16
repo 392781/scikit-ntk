@@ -33,8 +33,10 @@ jobs:
       
     - name: Publishing test run
       run: |
-        poetry publish --build --dry-run
+        poetry build
+        poetry publish --dry-run
         
     - name: Publishing scikit-ntk to PyPI
       run: |
-        poetry publish --build --username __token__ --password ${{ secrets.PYPI_API_TOKEN }}
+        poetry build
+        poetry publish --username __token__ --password ${{ secrets.PYPI_API_TOKEN }}
