@@ -66,4 +66,4 @@ jobs:
 
       - name: Testing scikit-ntk
         run: |
-          poetry test
+          poetry run pytest
