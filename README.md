@@ -28,6 +28,23 @@ kernel_ntk = NTK(D=3, bias=0.01, bias_bounds=(1e-6, 1e6))
 ```
 Once declared, usage is the same as other `scikit-learn` kernels.
 
+## Building
+Python Poetry (>=1.2) is required if you wish to build `scikit-ntk` from source.  In order to build follow these steps:
+
+1. Clone the repository
+```bash
+git clone git@github.com:392781/scikit-ntk.git
+```
+2. Enable a Poetry virtual environment
+```bash
+poetry shell
+```
+3. Build and install
+```bash
+poetry build
+poetry install --with dev
+```
+
 ## Citation
 
 If you use scikit-ntk in your scientific work, please use the following citation alongside the scikit-learn citations found at [https://scikit-learn.org/stable/about.html#citing-scikit-learn](https://scikit-learn.org/stable/about.html#citing-scikit-learn):
