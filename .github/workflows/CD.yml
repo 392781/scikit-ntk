@@ -4,9 +4,6 @@ on:
   release:
     types: [published]
 
-permissions:
-  contents: read
-
 jobs:     
   deploy:
     strategy:
@@ -20,6 +17,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     
     - name: Setting up latest Python version
       uses: actions/setup-python@v4
@@ -35,6 +34,16 @@ jobs:
       run: |
         poetry build
         poetry publish --dry-run
+        
+    - name: Setting up git user and apply semantic versioning using Poetry
+      run: |
+        git config user.email "392781@users.noreply.github.com"
+        git config user.name "392781"
+        poetry version $GITHUB_REF_NAME
+        git checkout master
+        git add pyproject.toml
+        git commit -m "Release version updated to $GITHUB_REF_NAME"
+        git push origin master
         
     - name: Publishing scikit-ntk to PyPI
       run: |
