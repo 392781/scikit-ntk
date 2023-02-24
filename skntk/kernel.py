@@ -57,7 +57,6 @@ class NeuralTangentKernel(Kernel):
         aug = False
         X_shape = -1
         Z_shape = -1
-        products = []
 
         if Z is None:
             Z = X
@@ -70,7 +69,8 @@ class NeuralTangentKernel(Kernel):
             aug = True
 
         if eval_gradient:
-            products.append(np.ones((X.shape[0], X.shape[0])))
+            products = np.ones((X.shape[0], X.shape[0]))
+            inverted_sums = np.ones((X.shape[0], X.shape[0]))
 
         Σ_mat = X @ Z.T
 
@@ -83,20 +83,21 @@ class NeuralTangentKernel(Kernel):
             div = Σ_mat / denominator
             div = np.nan_to_num(div)
             λ = np.clip(div, a_min=-1, a_max=1)
-            Σ_mat = (self.c / (2 * np.pi)) * (λ * (np.pi - np.arccos(λ))
-                                              + np.sqrt(1 - λ**2)) * denominator
+            Σ_mat = (self.c / (2 * np.pi)) * (
+                λ * (np.pi - np.arccos(λ)) + np.sqrt(1 - λ**2)) * denominator
             Σ_mat_dot = (self.c / (2 * np.pi)) * (np.pi - np.arccos(λ))
             K = K * Σ_mat_dot + Σ_mat + self.bias**2
 
             if eval_gradient:
-                products.append(products[-1] * Σ_mat_dot)
+                products *= Σ_mat_dot
+                inverted_sums += 1 / products
 
         scalar = 1 / ((self.depth + 1) * (self.bias**2 + 1))
 
         if eval_gradient:
             if not self.hyperparameter_bias.fixed:
-                K_prime = 2 * self.bias**2 * products[-1] \
-                    * (1 + sum(1 / np.array(products)))
+                # Appendix A, pg. 75 @lencevicius2022laplacentk
+                K_prime = 2 * self.bias**2 * products * inverted_sums
                 K_prime = np.expand_dims(K_prime, -1)
                 return scalar * K, scalar * \
                     (K_prime - ((2 * self.bias**2) / (self.bias**2 + 1))
