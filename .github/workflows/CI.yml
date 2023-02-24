@@ -38,7 +38,7 @@ jobs:
     
     - name: Analyzing files using flake8 with options
       run: |
-        flake8 . --max-line-length=100 --show-source --statistics --ignore=F401,W503
+        flake8 . --max-line-length=100 --show-source --statistics --ignore=F401
 
   ci:
     strategy:
