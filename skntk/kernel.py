@@ -100,8 +100,8 @@ class NeuralTangentKernel(Kernel):
                 K_prime = 2 * self.bias**2 * products * inverted_sums
                 K_prime = np.expand_dims(K_prime, -1)
                 return scalar * K, scalar * \
-                    (K_prime - ((2 * self.bias**2) / (self.bias**2 + 1))
-                     * np.expand_dims(K, -1))
+                    (K_prime - ((2 * self.bias**2) / (self.bias**2 + 1)) *
+                     np.expand_dims(K, -1))
             else:
                 return scalar * K, np.empty((X.shape[0], X.shape[0], 0))
         else:
