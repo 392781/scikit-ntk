@@ -9,7 +9,7 @@
 ### Dependencies
 
 scikit-ntk requires:
-* Python (>=3.7)
+* Python (>=3.8)
 * scikit-learn (>=1.0.1)
 
 
