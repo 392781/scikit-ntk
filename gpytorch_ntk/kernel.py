@@ -9,8 +9,8 @@ Reference:
     for scikit-learn's Gaussian process module.
 """
 
-import torch
 import math
+import torch
 from gpytorch.kernels import Kernel
 from gpytorch.constraints import Interval, Positive
 from gpytorch.priors import Prior
@@ -83,15 +83,18 @@ class NeuralTangentKernel(Kernel):
         self.depth = depth
         self.c = 2.0  # Constant for ReLU activation
         
-        # Register bias parameter directly without constraint
-        # We want the bias to be used as-is, not transformed
-        self.register_parameter(
-            name="raw_bias",
-            parameter=torch.nn.Parameter(torch.tensor(bias)),
-        )
+        # Register bias parameter
+        # We want the bias to be used directly without transformation by default
+        # Only apply constraint if explicitly provided
+        self.raw_bias = torch.nn.Parameter(torch.tensor(bias))
         
-        # Store constraint for potential use with priors
+        # Register the parameter
+        self.register_parameter(name="raw_bias", parameter=self.raw_bias)
+        
+        # Only register constraint if explicitly provided
         self._bias_constraint = bias_constraint
+        if bias_constraint is not None:
+            self.register_constraint("raw_bias", bias_constraint)
         
         if bias_prior is not None:
             if not isinstance(bias_prior, Prior):
@@ -105,7 +108,9 @@ class NeuralTangentKernel(Kernel):
 
     @property
     def bias(self) -> torch.Tensor:
-        """The bias parameter (direct value, not transformed)."""
+        """The bias parameter (transformed through constraint if applicable)."""
+        if self._bias_constraint is not None:
+            return self._bias_constraint.transform(self.raw_bias)
         return self.raw_bias
 
     @bias.setter
@@ -122,6 +127,11 @@ class NeuralTangentKernel(Kernel):
             value = self._bias_constraint.inverse_transform(value)
         
         self.initialize(raw_bias=value)
+
+    @property
+    def is_stationary(self) -> bool:
+        """The NTK is not a stationary kernel."""
+        return False
 
     def forward(
         self,
